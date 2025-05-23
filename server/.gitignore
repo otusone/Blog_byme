@@ -1,0 +1,5 @@
+node_modules/
+package-lock.json
+../screens/node_modules
+../screens/package-lock.json
+.env

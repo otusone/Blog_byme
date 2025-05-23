@@ -1,0 +1,19 @@
+.title-date-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.post-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+}
+
+.post-date {
+  color: var(--dark-gray);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
