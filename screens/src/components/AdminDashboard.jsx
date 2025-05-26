@@ -251,7 +251,7 @@ const AdminDashboard = () => {
           <div className="form-group">
             <label>Excerpt</label>
             <Editor
-              apiKey='fj25ab35i0na5o7uaeoe8md38hblbvbpq05x739bxmkcnmph'
+              apiKey={import.meta.env.VITE_TINYMCE_KEY}
               onInit={(evt, editor) => editorRef.current = editor}
               value={formData.excerpt}
               onEditorChange={(newExcerpt) =>
@@ -284,7 +284,7 @@ const AdminDashboard = () => {
           <div className="form-group">
             <label>Content</label>
             <Editor
-              apiKey='fj25ab35i0na5o7uaeoe8md38hblbvbpq05x739bxmkcnmph'
+              apiKey={import.meta.env.VITE_TINYMCE_KEY}
               onInit={(evt, editor) => editorRef.current = editor}
               value={formData.content}
               onEditorChange={(newContent) =>
