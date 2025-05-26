@@ -104,6 +104,7 @@ const AdminDashboard = () => {
       alert("Successfully created the blog");
 
     } catch (err) {
+      alert("Failed in creating the blog");
       console.error('Error saving post:', err);
     }
   };
@@ -134,8 +135,11 @@ const AdminDashboard = () => {
           headers: { Authorization: `Bearer ${token}` }
         });
         alert("Successfully deleted the blog");
+        resetForm();
         fetchPosts();
+
       } catch (err) {
+        alert("Failed to delete the blog");
         console.error('Error deleting post:', err);
       }
     }

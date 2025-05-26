@@ -4,8 +4,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from './slices/authSlice';
-import { baseurl } from '../baseUrl/baseUrl';
-import toast from "react-hot-toast"
+import { baseurl } from '../baseUrl/baseurl';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { TextField, InputAdornment, IconButton } from "@mui/material";
+import toast from "react-hot-toast";
 
 
 const AuthModal = ({ onClose, onLogin }) => {
@@ -14,6 +16,8 @@ const AuthModal = ({ onClose, onLogin }) => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,16 +68,45 @@ const AuthModal = ({ onClose, onLogin }) => {
             />
           </div>
 
-          <div className="form-group">
+          {/* <div className="form-group">
             <label><FaLock /> Password</label>
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={togglePasswordVisibility} edge="end">
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </div> */}
+
+          <div className="form-group">
+            <label><FaLock /> Password</label>
+            <TextField
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              fullWidth
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
-
           {error && <div className="error-message">{error}</div>}
 
           <button type="submit" className="login-submit-btn">
@@ -84,5 +117,4 @@ const AuthModal = ({ onClose, onLogin }) => {
     </div>
   );
 };
-
 export default AuthModal;
